@@ -5,7 +5,7 @@ export interface Options {
   restoreOnUnmount?: boolean;
 }
 
-const useBrowserTitle = (title: string, options: Options = {}) => {
+function useBrowserTitle(title: string, options: Options = {}) {
   const { restoreOnUnmount = false } = options;
   const prevTitleRef = useRef(document.title);
 
@@ -18,12 +18,12 @@ const useBrowserTitle = (title: string, options: Options = {}) => {
       };
     }
   }, []);
-};
+}
 
-const useNonBrowserTitle = (_title: string) => {
+function useNonBrowserTitle(_title: string) {
   // do nothing if it's not in a browser
   return;
-};
+}
 
 const useTitle = isBrowser ? useBrowserTitle : useNonBrowserTitle;
 
